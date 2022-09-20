@@ -1,6 +1,8 @@
 import 'package:firedart/firedart.dart';
 import 'package:flutter/material.dart';
 
+import 'api/signin_api.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -12,6 +14,16 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _email = TextEditingController();
   final TextEditingController _password = TextEditingController();
   CollectionReference adddata = Firestore.instance.collection('userdata');
+  Future<void> sigin() async {
+    // ignore: unused_local_variable
+    final bool check =
+        await SigninAPI().signin(email: _email.text, password: _password.text);
+    if (check) {
+      print('shukar ay');
+    } else
+      print('nai chala');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,15 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  await adddata.add({
-                    'email': _email.text,
-                    'password': _password.text,
-                  });
-                  print('add Button pressed');
-                },
-                child: const Text('Login'))
+            ElevatedButton(onPressed: sigin, child: const Text('Login'))
           ],
         ),
       ),

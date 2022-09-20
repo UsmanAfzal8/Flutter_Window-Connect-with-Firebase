@@ -1,4 +1,3 @@
-import 'package:firedart/auth/firebase_auth.dart';
 
 // class AuthMethod {
 //   static final FirebaseAuth _auth = FirebaseAuth.instance;

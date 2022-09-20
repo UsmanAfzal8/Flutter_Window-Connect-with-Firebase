@@ -5,7 +5,7 @@ import 'login.dart';
 
 const apiKey = 'AIzaSyBY8TOA2eQWIVYmNry-GCpMZ5dTbknzAmo';
 const projectID = 'window-connection';
-void main() {
+void main() async {
   Firestore.initialize(projectID);
   runApp(const MyApp());
 }
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  LoginPage(),
+      home: const LoginPage(),
     );
   }
 }
