@@ -7,6 +7,7 @@ const apiKey = 'AIzaSyBY8TOA2eQWIVYmNry-GCpMZ5dTbknzAmo';
 const projectID = 'window-connection';
 void main() async {
   Firestore.initialize(projectID);
+  FirebaseAuth.initialize(apiKey, VolatileStore());
   runApp(const MyApp());
 }
 

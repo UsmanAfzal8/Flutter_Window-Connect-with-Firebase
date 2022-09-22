@@ -1,20 +1,21 @@
 import 'package:firedart/auth/firebase_auth.dart';
 
-import '../preferences_store.dart';
+import 'firebaseauth.dart';
 
 class SigninAPI {
-  //var firebaseAuth = FirebaseAuth.initialize('AIzaSyBY8TOA2eQWIVYmNry-GCpMZ5dTbknzAmo',  PreferencesStore());
-
-  static final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  static final FirebaseAuth _firebaseAuthService = FirebaseAuth.instance;
+  static String? get uid => _firebaseAuthService.userId;
   Future<bool> signin({
     required String email,
     required String password,
   }) async {
     try {
-      await _auth.signIn(email, password);
-      //await _auth.signInWithEmailAndPassword(email: email, password: password);
+      print('war giya ');
+      await _firebaseAuthService.signIn(email, password);
 
+      print('chal giya 2');
+      print(FirebaseAuth.instance);
+      print(uid);
       return true;
     } catch (err) {
       return false;
